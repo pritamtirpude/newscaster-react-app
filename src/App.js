@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Routes, Route } from "react-router-dom";
+import { Navigation, Categories, NewsList } from "./components";
+
+import GlobalStyles from "./GloblaStyles";
+import { newsHeadLinesAsync, fetchNewsLoading } from "./store/news/news.action";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchNewsLoading());
+    dispatch(newsHeadLinesAsync);
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalStyles />
+      <Routes>
+        <Route path="/" element={<Navigation />}>
+          <Route index element={<NewsList />} />
+          <Route path="categories/*" element={<Categories />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
