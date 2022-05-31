@@ -17,6 +17,15 @@ export const StyledLink = styled(Link)`
 export const NavContainer = styled.nav`
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 768px) {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+  }
 `;
 
 export const Logo = styled.div`
