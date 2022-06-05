@@ -44,8 +44,11 @@ export const DetailContainer = styled(motion.div)`
   height: auto;
   top: 5%;
   left: 10%;
+  border-radius: 1rem;
+  overflow: hidden;
   @media screen and (max-width: 768px) {
     width: 100%;
+    top: 10%;
     left: 0%;
   }
 

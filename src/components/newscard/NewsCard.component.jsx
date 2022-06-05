@@ -40,12 +40,14 @@ const NewsCard = ({ article }) => {
       {isOpen && (
         <Overlay className="overlay">
           <DetailContainer layoutId={article._id}>
-            <motion.img
-              src={article.media || "https://fakeimg.pl/640x360/"}
-              alt={article.title}
-              loading="lazy"
-              layoutId={`${article.media} ${article._id}`}
-            />
+            <div>
+              <motion.img
+                src={article.media || "https://fakeimg.pl/640x360/"}
+                alt={article.title}
+                loading="lazy"
+                layoutId={`${article.media} ${article._id}`}
+              />
+            </div>
             <Detail>
               <motion.h2 layoutId={`${article.title} ${article._id}`}>
                 {article.title}
